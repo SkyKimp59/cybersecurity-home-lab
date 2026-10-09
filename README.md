@@ -1,60 +1,44 @@
-# Cybersecurity Home Lab
+Linux File Permissions & Access Control
+Project Overview
 
-## About This Project
+This project demonstrates basic Linux file permissions and access control using an Ubuntu virtual machine running in UTM on an Apple Silicon Mac.
 
-This repository documents my hands-on cybersecurity learning journey.
+Objectives
+Create a sample file in Linux.
+Inspect initial file permissions.
+Restrict file permissions using chmod.
+Verify file contents and permission settings.
+Capture screenshots documenting each stage.
+Tools and Environment
+Ubuntu Linux
+UTM virtual machine
+Linux terminal
+Apple Silicon MacBook Pro
+Commands Used
+Command	Purpose
+echo "Confidential test data" > sample.txt	Creates a sample file
+ls -l sample.txt	Displays file permissions and ownership
+chmod 600 sample.txt	Restricts permissions to owner read/write
+cat sample.txt	Displays the file contents
+stat -c '%A %a %n' sample.txt	Verifies permission symbols, numeric mode, and filename
+Findings
 
-I am building a virtual cybersecurity lab using an Apple Silicon Mac and UTM. The goal of this project is to develop practical IT and cybersecurity skills alongside my CompTIA Security+ certification.
+The initial file permissions were rw-rw-r--, allowing the owner and group to read and write, while other users could read the file.
 
-## Current Environment
+After applying chmod 600 sample.txt, the permissions changed to rw-------.
 
-- Host machine: Apple M3 Mac
-- Virtualization: UTM
-- Operating System: Ubuntu 26.04.1 LTS
-- Lab type: Virtual machine
+The cat command confirmed that the file contents remained readable by the current user. The stat command verified permission mode 600.
 
-## Skills Practiced
+Screenshots
+01-initial-permissions.png — Initial file permissions.
+02-restricted-permissions.png — Permissions after applying chmod 600.
+03-permission-verification.png — File contents and final permission verification.
+Skills Demonstrated
+Linux command-line fundamentals
+File permissions and access control
+Permission mode interpretation
+Basic system security
+Technical documentation and evidence collection
+Security Note
 
-- Linux command-line fundamentals
-- Linux filesystem navigation
-- File and directory management
-- Basic Linux administration
-- Log analysis
-- Searching logs with `grep`
-- Basic security investigation
-- Technical documentation
-- GitHub project management
-
-## Projects
-
-### 1. Linux Log Analysis
-
-**Objective:** Practice using Linux command-line tools to analyze authentication events.
-
-**Skills demonstrated:**
-
-- `pwd`
-- `ls`
-- `cd`
-- `mkdir`
-- `nano`
-- `cat`
-- `grep`
-
-I created a sample authentication log containing successful and failed login attempts and used Linux commands to identify relevant events.
-
-[View the Log Analysis Project](./log-analysis/)
-
-## Future Projects
-
-- Windows administration
-- Active Directory
-- Networking fundamentals
-- Security monitoring
-- SIEM log analysis
-- Incident investigation
-- Additional cybersecurity labs
-
-## What I'm Learning
-
-My goal is to develop practical skills that can be demonstrated through hands-on projects rather than relying solely on certifications.
+This exercise was performed in a self-managed virtual machine for educational purposes. Permission settings were verified, but access by a separate user account was not tested.
