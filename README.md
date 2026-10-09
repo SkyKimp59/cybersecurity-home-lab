@@ -20,25 +20,25 @@ echo "Confidential test data" > sample.txt	Creates a sample file
 ls -l sample.txt	Displays file permissions and ownership
 chmod 600 sample.txt	Restricts permissions to owner read/write
 cat sample.txt	Displays the file contents
-stat -c '%A %a %n' sample.txt	Verifies permission symbols, numeric mode, and filename
+stat -c '%A %a %n' sample.txt	Verifies permissions and filename
 Findings
 
-The initial file permissions were rw-rw-r--, allowing the owner and group to read and write, while other users could read the file.
+The initial permissions were rw-rw-r--. The owner and group could read and write, while other users could read the file.
 
-After applying chmod 600 sample.txt, the permissions changed to rw-------.
+After running chmod 600 sample.txt, the permissions changed to rw-------.
 
-The cat command confirmed that the file contents remained readable by the current user. The stat command verified permission mode 600.
+The cat command confirmed that the current user could still read the file. The stat command verified permission mode 600.
 
 Screenshots
-01-initial-permissions.png — Initial file permissions.
-02-restricted-permissions.png — Permissions after applying chmod 600.
+01-initial-permissions.png — Initial permissions.
+02-restricted-permissions.png — Updated permissions after applying chmod 600.
 03-permission-verification.png — File contents and final permission verification.
 Skills Demonstrated
 Linux command-line fundamentals
 File permissions and access control
 Permission mode interpretation
 Basic system security
-Technical documentation and evidence collection
-Security Note
+Technical documentation
+Disclaimer
 
-This exercise was performed in a self-managed virtual machine for educational purposes. Permission settings were verified, but access by a separate user account was not tested.
+This exercise was performed in a self-managed virtual machine for educational purposes. Access by a separate user account was not tested.
